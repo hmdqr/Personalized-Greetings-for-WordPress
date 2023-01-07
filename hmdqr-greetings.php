@@ -2,9 +2,12 @@
 /*
  * Plugin Name: Greetings Shortcode
  * Description: This plugin adds a shortcode for displaying personalized greetings for logged in users or guests in multiple languages, using the Polylang plugin.
- * Version: 1.0
+ * Version: 1.1
  * Author: Hamad M H Al-Qassar
  */
+
+// Exit if accessed directly
+if (!defined('ABSPATH')) exit;
 
 function greetings_shortcode() {
   // Check if the user is logged in

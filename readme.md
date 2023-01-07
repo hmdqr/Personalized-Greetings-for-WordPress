@@ -47,3 +47,11 @@ If you find this plugin useful and would like to support its development, you ca
 
 - PayPal: https://paypal.me/hmdqr/
 - Ko-Fi: https://ko-fi.com/abc/
+
+## Changelog
+
+### 1.1
+- Added a check to ensure that the plugin is not accessed directly by verifying that the ABSPATH constant has been defined. This helps to prevent potential security vulnerabilities by blocking access to the plugin's files from external sources. This change helps to improve the overall security of the plugin.
+
+### 1.0
+- Initial release of the plugin.

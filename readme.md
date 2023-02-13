@@ -21,8 +21,7 @@ If the Polylang plugin is not installed or active, the greeting will be displaye
 
 This plugin is licensed under the GPLv2 or later.
 
-
-
+## FAQ
 
 **Q: Can I use this plugin with other languages besides English?**
 
@@ -30,11 +29,6 @@ Yes, you can use this plugin with other languages besides English! The plugin in
 
 To use the plugin with other languages, you will need to install and activate the Polylang plugin. 
 Then, you can use the Polylang plugin to translate the greeting text into the desired language.
-
-**Q: Is this plugin accessible for screen reader users?**
-
-Yes, this plugin is fully accessible for screen reader users. 
-The greeting text is enclosed in an `h2` heading element and includes an `aria-label` attribute that provides a short, descriptive label for the greeting.
 
 **Q: Can I use this plugin to display greetings for logged out users?**
 
@@ -49,6 +43,10 @@ If you find this plugin useful and would like to support its development, you ca
 - Ko-Fi: https://ko-fi.com/abc/
 
 ## Changelog
+
+### 1.2
+
+- Updated the plugin to version 1.2 which includes a new feature that allows you to customize the default nickname for non-logged-in users. The plugin now uses the value of the nickname field to change the visitor name for visitor, friend, or guest as a default, as you wish. With this update, you can now set "Visitor" as the default nickname for non-logged-in users instead of "Guest".
 
 ### 1.1
 - Added a check to ensure that the plugin is not accessed directly by verifying that the ABSPATH constant has been defined. This helps to prevent potential security vulnerabilities by blocking access to the plugin's files from external sources. This change helps to improve the overall security of the plugin.

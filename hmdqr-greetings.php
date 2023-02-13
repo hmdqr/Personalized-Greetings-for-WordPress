@@ -9,46 +9,40 @@
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
 
-function greetings_shortcode() {
+function gs_greetings_shortcode( $atts ) {
+  // Extract the nickname attribute (if present)
+  $atts = shortcode_atts( array(
+    'nick' => '',
+  ), $atts );
+
   // Check if the user is logged in
   if ( is_user_logged_in() ) {
-    // Going to get the current user's display name
+    // Get the current user's display name
     $current_user = wp_get_current_user();
-    $display_name = $current_user->display_name;
+    $display_name = $atts['nick'] ? $atts['nick'] : $current_user->display_name;
   } else {
-    // Set the display name to "Guest" if the user is not logged in
-    $display_name = __( 'Guest', 'polylang' );
+    // Set the display name to the nickname (if provided) or "Guest"
+    $display_name = $atts['nick'] ? $atts['nick'] : __( 'Guest', 'gs-greetings' );
   }
 
   // Get the current time
-  $current_time = current_time( 'H' );
+  $current_time = (int) current_time( 'H' );
 
-  // Display different greetings based on the time of day and the current language
+  // Set default greeting in case the time is not covered by the conditions below
+  $greeting = '';
+
+  // Set the greeting based on the time of day and the current language
   if ( $current_time < 12 ) {
-    if ( function_exists( 'pll__' ) ) {
-      // Use the Polylang plugin to translate the greeting
-      $greeting = pll__( 'Good morning, dear' ) . " $display_name!";
-    } else {
-      // Use the default language (English) if the Polylang plugin is not available
-      $greeting = "Good morning, dear $display_name!";
-    }
+    $morning_greeting = pll__( 'Good morning, dear', 'gs-greetings' );
+    $greeting = "{$morning_greeting} {$display_name}!";
   } elseif ( $current_time < 18 ) {
-    if ( function_exists( 'pll__' ) ) {
-      // Use the Polylang plugin to translate the greeting
-      $greeting = pll__( 'Good afternoon, dear' ) . " $display_name!";
-    } else {
-      // Use the default language (English) if the Polylang plugin is not available
-      $greeting = "Good afternoon, dear $display_name!";
-    }
+    $afternoon_greeting = pll__( 'Good afternoon, dear', 'gs-greetings' );
+    $greeting = "{$afternoon_greeting} {$display_name}!";
   } else {
-    if ( function_exists( 'pll__' ) ) {
-      // Use the Polylang plugin to translate the greeting
-      $greeting = pll__( 'Good evening, dear' ) . " $display_name!";
-    } else {
-      // Use the default language (English) if the Polylang plugin is not available
-      $greeting = "Good evening, dear $display_name!";
-    }
+    $evening_greeting = pll__( 'Good evening, dear', 'gs-greetings' );
+    $greeting = "{$evening_greeting} {$display_name}!";
   }
+
   return $greeting;
 }
 

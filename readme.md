@@ -40,7 +40,7 @@ If the user is not logged in, the greeting will be displayed as "Good morning/af
 If you find this plugin useful and would like to support its development, you can donate through PayPal or Ko-Fi:
 
 - PayPal: https://paypal.me/hmdqr/
-- Ko-Fi: https://ko-fi.com/abc/
+- Ko-Fi: https://ko-fi.com/hmdqr/
 
 ## Changelog
 
